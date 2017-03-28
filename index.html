@@ -20,6 +20,11 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<style>
+		  ul.inline { list-style-type: none; }
+      .inline ul, .inline li { display: inline; }
+		</style>
+
 	</head>
 	<body>
 		<div class="reveal">
@@ -30,6 +35,170 @@
 				<section>
 					<h3>#0 - Not using stdlib</h3>
 					<section>Use stdlib</section>
+					<section>
+						<ul class="inline" style="font-size: 15px; font-family: monospace;">
+							<li>is_a</li>
+							<li>is_absolute_path</li>
+							<li>is_array</li>
+							<li>is_bool</li>
+							<li>is_float</li>
+							<li>is_ip_address</li>
+							<li>is_ipv4_address</li>
+							<li>is_ipv6_address</li>
+							<li>is_numeric</li>
+							<li>is_string</li>
+							<li>length</li>
+							<li>type_of</li>
+							<li>validate_absolute_path</li>
+							<li>validate_array</li>
+							<li>validate_bool</li>
+							<li>validate_hash</li>
+							<li>validate_integer</li>
+							<li>validate_ip_address</li>
+							<li>validate_ipv4_address</li>
+							<li>validate_ipv6_address</li>
+							<li>validate_legacy</li>
+							<li>validate_numeric</li>
+							<li>validate_re</li>
+							<li>validate_slength</li>
+							<li>validate_string</li>
+							<li>abs</li>
+							<li>any2array</li>
+							<li>any2bool</li>
+							<li>assert_private</li>
+							<li>base64</li>
+							<li>basename</li>
+							<li>bool2num</li>
+							<li>bool2str</li>
+							<li>camelcase</li>
+							<li>capitalize</li>
+							<li>ceiling</li>
+							<li>chomp</li>
+							<li>chop</li>
+							<li>clamp</li>
+							<li>concat</li>
+							<li>convert_base</li>
+							<li>count</li>
+							<li>deep_merge</li>
+							<li>defined_with_params</li>
+							<li>delete</li>
+							<li>delete_at</li>
+							<li>delete_regex</li>
+							<li>delete_undef_values</li>
+							<li>delete_values</li>
+							<li>deprecation</li>
+							<li>difference</li>
+							<li>dig</li>
+							<li>dig44</li>
+							<li>dirname</li>
+							<li>dos2unix</li>
+							<li>downcase</li>
+							<li>empty</li>
+							<li>enclose_ipv6</li>
+							<li>ensure_packages</li>
+							<li>ensure_resource</li>
+							<li>ensure_resources</li>
+							<li>flatten</li>
+							<li>floor</li>
+							<li>fqdn_rand_string</li>
+							<li>fqdn_rotate</li>
+							<li>fqdn_uuid</li>
+							<li>get_module_path</li>
+							<li>getparam</li>
+							<li>getvar</li>
+							<li>glob</li>
+							<li>grep</li>
+							<li>has_interface_with</li>
+							<li>has_ip_address</li>
+							<li>has_ip_network</li>
+							<li>has_key</li>
+							<li>hash</li>
+							<li>intersection</li>
+							<li>is_absolute_path</li>
+							<li>is_array</li>
+							<li>is_bool</li>
+							<li>is_domain_name</li>
+							<li>is_email_address</li>
+							<li>is_float</li>
+							<li>is_function_available</li>
+							<li>is_hash</li>
+							<li>is_integer</li>
+							<li>is_ip_address</li>
+							<li>is_ipv4_address</li>
+							<li>is_ipv6_address</li>
+							<li>is_mac_address</li>
+							<li>is_numeric</li>
+							<li>is_string</li>
+							<li>join</li>
+							<li>join_keys_to_values</li>
+							<li>keys</li>
+							<li>load_module_metadata</li>
+							<li>loadjson</li>
+							<li>loadyaml</li>
+							<li>lstrip</li>
+							<li>max</li>
+							<li>member</li>
+							<li>merge</li>
+							<li>min</li>
+							<li>num2bool</li>
+							<li>parsejson</li>
+							<li>parseyaml</li>
+							<li>pick</li>
+							<li>pick_default</li>
+							<li>prefix</li>
+							<li>private</li>
+							<li>pry</li>
+							<li>pw_hash</li>
+							<li>range</li>
+							<li>regexpescape</li>
+							<li>reject</li>
+							<li>reverse</li>
+							<li>rstrip</li>
+							<li>seeded_rand</li>
+							<li>shell_escape</li>
+							<li>shell_join</li>
+							<li>shell_split</li>
+							<li>shuffle</li>
+							<li>size</li>
+							<li>sort</li>
+							<li>squeeze</li>
+							<li>str2bool</li>
+							<li>str2saltedsha512</li>
+							<li>strftime</li>
+							<li>strip</li>
+							<li>suffix</li>
+							<li>swapcase</li>
+							<li>time</li>
+							<li>to_bytes</li>
+							<li>try_get_value</li>
+							<li>type</li>
+							<li>type3x</li>
+							<li>union</li>
+							<li>unique</li>
+							<li>unix2dos</li>
+							<li>upcase</li>
+							<li>uriescape</li>
+							<li>validate_absolute_path</li>
+							<li>validate_array</li>
+							<li>validate_augeas</li>
+							<li>validate_bool</li>
+							<li>validate_cmd</li>
+							<li>validate_email_address</li>
+							<li>validate_hash</li>
+							<li>validate_integer</li>
+							<li>validate_ip_address</li>
+							<li>validate_ipv4_address</li>
+							<li>validate_ipv6_address</li>
+							<li>validate_numeric</li>
+							<li>validate_re</li>
+							<li>validate_slength</li>
+							<li>validate_string</li>
+							<li>validate_x509_rsa_key_pair</li>
+							<li>values</li>
+							<li>values_at</li>
+							<li>zip</li>
+						</ul>
+					</section>
 			  </section>
 				<section>
 					<h3>#1 - "Sequence of steps"</h3>
@@ -77,7 +246,7 @@ class somemodule::someclass (
 					</section>
 				</section>
 				<section>
-					<h3>Being vague</h3>
+					<h3>#3 Being vague</h3>
 					<section>
 						<h4>'latest'</h4>
 						<pre><code class="puppet hljs" data-trim>
@@ -87,10 +256,10 @@ package {'httpd':
 
 service {'httpd':
   ensure    => 'running',
-	require   => Package['httpd'],
+  require   => Package['httpd'],
 }
 						</code></pre>
-						<p>What happens when httpd is updated?</p>
+						<p>What happens when httpd is updated in your repo?</p>
 					</section>
 					<section>
 						<h4>'installed'</h4>
@@ -101,9 +270,51 @@ package {'httpd':
 
 service {'httpd':
   ensure    => 'running',
+  require   => Package['httpd'],
+}
+						</code></pre>
+					</section>
+					<section>
+						<h4>A particular version</h4>
+						<pre><code class="puppet hljs" data-trim>
+package {'httpd':
+	ensure  => '2.2.40-9',
+}
+
+service {'httpd':
+	ensure    => 'running',
 	require   => Package['httpd'],
 }
 						</code></pre>
+					</section>
+				</section>
+				<section>
+					<h3>#4 Using Puppet as a scripting language</h3>
+					<section>
+						<h4>Lots of exec statements</h4>
+						<p>... which run every time the manifest is executed</p>
+						<p>Idempotent</p>
+					</section>
+				</section>
+				<section>
+					<h2>Don't forget the human</h2>
+					<section>
+						<h3>Your existing project...</h3>
+						<p>... may not use puppet well.</p>
+						<p>Don't assume it is what Puppet code should look like.</p>
+					</section>
+					<section>
+						<p>Refer to "well-written" modules</p>
+						<ul>
+							<li>stdlib</li>
+							<li>puppetlabs-ntp</li>
+						</ul>
+					</section>
+					<section>
+						<p>
+							Ensure those unfamiliar with Puppet get their code reviewed
+							by someone who is.
+						</p>
 					</section>
 				</section>
 			</div>
