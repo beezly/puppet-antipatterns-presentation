@@ -24,8 +24,88 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<h2>Puppet Anti-Patterns</h2>
+				</section>
+				<section>
+					<h3>#0 - Not using stdlib</h3>
+					<section>Use stdlib</section>
+			  </section>
+				<section>
+					<h3>#1 - "Sequence of steps"</h3>
+					<section>
+						<pre><code class="puppet hljs" data-notrim>
+class my_application {
+	class {'my_application::uninstall': } ->
+	class {'my_application::install': } ->
+	class {'my_application::configure': }
+}
+						</code></pre>
+					</section>
+					<section>
+						<p>You define the end state</p>
+						<p>Puppet works out how to get there?</p>
+					</section>
+				</section>
+				<section>
+					<h3>#2 - Untyped/Unvalidated Parameters</h3>
+				  <section>
+		        <h4>Bad</h4>
+						<pre><code class="puppet hljs" data-trim>
+class somemodule::someclass (
+  $a_parameter,
+  $another_parameter,
+) {
+	# Define some stuff
+}
+					  </code></pre>
+						<p>What should these values be?</p>
+						<p>What happens if they are left undefined</p>
+					</section>
+					<section>
+						<h4>Good</h4>
+						<pre><code class="puppet hljs" data-trim>
+class somemodule::someclass (
+  Optional[String]         $a_parameter,
+  Variant[Boolean, String] $another_parameter,
+) {
+	# Define some stuff
+}
+						</code></pre>
+						<p>Abstract data types in Puppet 4 and higher.</p>
+						<p>Use validate_ functions from stdlib if using Puppet &lt; 4</p>
+					</section>
+				</section>
+				<section>
+					<h3>Being vague</h3>
+					<section>
+						<h4>'latest'</h4>
+						<pre><code class="puppet hljs" data-trim>
+package {'httpd':
+  ensure  => 'latest',
+}
+
+service {'httpd':
+  ensure    => 'running',
+	require   => Package['httpd'],
+}
+						</code></pre>
+						<p>What happens when httpd is updated?</p>
+					</section>
+					<section>
+						<h4>'installed'</h4>
+						<pre><code class="puppet hljs" data-trim>
+package {'httpd':
+  ensure  => 'installed',
+}
+
+service {'httpd':
+  ensure    => 'running',
+	require   => Package['httpd'],
+}
+						</code></pre>
+					</section>
+				</section>
 			</div>
 		</div>
 
