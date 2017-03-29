@@ -33,7 +33,7 @@
 					<h2>Puppet Anti-Patterns</h2>
 				</section>
 				<section>
-					<h3>#0 - Not using stdlib</h3>
+					<h3>Not using stdlib</h3>
 					<section>Use stdlib</section>
 					<section>
 						<ul class="inline" style="font-size: 15px; font-family: monospace;">
@@ -201,7 +201,7 @@
 					</section>
 			  </section>
 				<section>
-					<h3>#1 - "Sequence of steps"</h3>
+					<h3>"Sequence of steps"</h3>
 					<section>
 						<pre><code class="puppet hljs" data-notrim>
 class my_application {
@@ -212,12 +212,45 @@ class my_application {
 						</code></pre>
 					</section>
 					<section>
-						<p>You define the end state</p>
-						<p>Puppet works out how to get there?</p>
+						<p>You define the end state.</p>
+						<p>Puppet works out how to get there.</p>
+					</section>
+					<section>
+						<pre><code class="puppet hljs" style="font-size: 14px;" data-notrim>
+class my_application {
+  package {'my_application':
+    ensure => '1.2.3-4',
+  }
+
+  file {'my_application_config':
+    ensure => 'present',
+    content => 'blah',
+    require => Package['my_application'],
+  }
+
+  service {'my_application_service':
+    ensure    => 'running',
+    enabled   => 'true',
+    subscribe => [Package['my_application'],File['my_application_config']],
+  }
+}
+						</code></pre>
 					</section>
 				</section>
 				<section>
-					<h3>#2 - Untyped/Unvalidated Parameters</h3>
+					<h3>Using Puppet as a Packaging/Distribution Tool</h3>
+					<section>
+						<p>Extracting tar files of your application?</p>
+						<p>Using Puppet as a fileserver?</p>
+					</section>
+					<section>
+						<h4>Use a packaging tool!</h4>
+						<p>RPM, DEB, etc. are your friends</p>
+						<p>Use FPM if you have to</p>
+					</section>
+				</section>
+				<section>
+					<h3>Untyped/Unvalidated Parameters</h3>
 				  <section>
 		        <h4>Bad</h4>
 						<pre><code class="puppet hljs" data-trim>
@@ -229,7 +262,7 @@ class somemodule::someclass (
 }
 					  </code></pre>
 						<p>What should these values be?</p>
-						<p>What happens if they are left undefined</p>
+						<p>What happens if they are left undefined?</p>
 					</section>
 					<section>
 						<h4>Good</h4>
@@ -244,9 +277,12 @@ class somemodule::someclass (
 						<p>Abstract data types in Puppet 4 and higher.</p>
 						<p>Use validate_ functions from stdlib if using Puppet &lt; 4</p>
 					</section>
+					<section>
+						<p>Don't use Puppet &lt; 4</p>
+					</section>
 				</section>
 				<section>
-					<h3>#3 Being vague</h3>
+					<h3>Be Specific</h3>
 					<section>
 						<h4>'latest'</h4>
 						<pre><code class="puppet hljs" data-trim>
@@ -289,32 +325,63 @@ service {'httpd':
 					</section>
 				</section>
 				<section>
-					<h3>#4 Using Puppet as a scripting language</h3>
+					<h3>Combining code and data</h3>
 					<section>
-						<h4>Lots of exec statements</h4>
-						<p>... which run every time the manifest is executed</p>
-						<p>Idempotent</p>
+						<p>Your data should stay external to your module code</p>
+						<p>Hiera is useful for keeping data outside of code</p>
 					</section>
 				</section>
 				<section>
-					<h2>Don't forget the human</h2>
+					<h3>Using Puppet as a scripting language</h3>
 					<section>
-						<h3>Your existing project...</h3>
-						<p>... may not use puppet well.</p>
-						<p>Don't assume it is what Puppet code should look like.</p>
+						<h4>Lots of exec "statements"</h4>
+						<p>... which run every time the manifest is executed</p>
 					</section>
+					<section>
+						<h4>Lots of ordered dependencies</h4>
+						<p>Stringing lots of exec "statements" with <code>-&gt;</code></p>
+					</section>
+					<section>
+						<h4>Above all else...</h4>
+						<p>Remember it should be idempotent</p>
+					</section>
+				</section>
+				<section>
+					<h3>Your existing project...</h3>
+					<section>
+						<p>... may not use puppet well.</p>
+						<p>May not be good practice</p>
+					</section>
+				</section>
+				<section>
+					<h3>Sources of 'good practice'</h3>
 					<section>
 						<p>Refer to "well-written" modules</p>
 						<ul>
 							<li>stdlib</li>
 							<li>puppetlabs-ntp</li>
 						</ul>
+						<p>Look for other high quality modules on Puppet Forge</p>
+						<p>Particularly "Puppet Supported" and "Puppet Approved" modules</p>
+					</section>
+				</section>
+				<section>
+				  <h3>Code Review</h3>
+					<section>
+						<p>Ensure those unfamiliar with Puppet get their code reviewed by someone who is.</p>
 					</section>
 					<section>
-						<p>
-							Ensure those unfamiliar with Puppet get their code reviewed
-							by someone who is.
-						</p>
+						<p>Especially useful for developers writing their own Puppet code.</p>
+					</section>
+				</section>
+				<section>
+					<h3>Testing</h3>
+					<section>
+						<ul>
+							<li>Style - puppet-lint</li>
+							<li>Unit Tests - rspec-puppet</li>
+							<li>Integration Tests - Vagrant, Beaker, Beaker-rspec (Beaker + ServerSpec + RSpec)</li>
+						</ul>
 					</section>
 				</section>
 			</div>
